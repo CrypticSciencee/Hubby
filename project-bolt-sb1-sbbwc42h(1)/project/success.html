@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - AutoFlow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --clr-bg: #0E0F19;
+            --clr-accent: #00E5FF;
+            --clr-light: #F8F9FA;
+            --clr-muted: #A0A3B1;
+            --clr-success: #00C851;
+            --ff-base: "Inter", sans-serif;
+            --radius: 0.75rem;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: var(--ff-base);
+            background: var(--clr-bg);
+            color: var(--clr-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 3rem 2rem;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--clr-success);
+            margin-bottom: 2rem;
+            animation: bounce 1s ease infinite alternate;
+        }
+
+        .success-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--clr-accent);
+        }
+
+        .success-message {
+            font-size: 1.125rem;
+            color: var(--clr-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .next-steps {
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .next-steps h3 {
+            color: var(--clr-accent);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .next-steps li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .next-steps li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--clr-success);
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--clr-accent);
+            color: var(--clr-bg);
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--clr-accent);
+            border: 2px solid var(--clr-accent);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--clr-light);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--clr-accent);
+            color: var(--clr-accent);
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 768px) {
+            .success-container { padding: 2rem 1rem; }
+            .success-title { font-size: 2rem; }
+            .btn { display: block; margin: 0.5rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">🎉</div>
+        <h1 class="success-title">Payment Successful!</h1>
+        <p class="success-message">
+            Thank you for subscribing to AutoFlow! Your social media automation journey starts now.
+        </p>
+
+        <div class="next-steps">
+            <h3>What happens next?</h3>
+            <ul>
+                <li>You'll receive a welcome email with your account details within 5 minutes</li>
+                <li>Our team will set up your automation dashboard within 24 hours</li>
+                <li>You'll get a personal onboarding call to optimize your strategy</li>
+                <li>Your first automated posts will go live within 48 hours</li>
+            </ul>
+        </div>
+
+        <div>
+            <a href="mailto:support@autoflow.com" class="btn">Contact Support</a>
+            <a href="/" class="btn btn-outline">Back to Home</a>
+        </div>
+
+        <p style="margin-top: 2rem; color: var(--clr-muted); font-size: 0.875rem;">
+            Questions? Email us at <a href="mailto:support@autoflow.com" style="color: var(--clr-accent);">support@autoflow.com</a>
+        </p>
+    </div>
+
+    <script>
+        // Get session ID from URL and log it (for tracking purposes)
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+        if (sessionId) {
+            console.log('Payment session:', sessionId);
+        }
+    </script>
+</body>
+</html>

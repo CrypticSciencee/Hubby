@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFlow - Social Media Automation That Converts</title>
+    <meta name="description" content="Scale your social media presence with our intelligent automation platform. From content creation to engagement - we handle it all.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <img src="./assets/images/logo.png" alt="AutoFlow" class="nav__logo">
+                <span class="nav__title">AutoFlow</span>
+            </div>
+            <ul class="nav__menu">
+                <li><a href="#features" class="nav__link">Features</a></li>
+                <li><a href="#pricing" class="nav__link">Pricing</a></li>
+                <li><a href="#testimonials" class="nav__link">Reviews</a></li>
+                <li><a href="#contact" class="nav__link btn btn--outline">Get Started</a></li>
+            </ul>
+            <button class="nav__toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__bg"></div>
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__text">
+                    <h1 class="hero__title">
+                        Scale Your Social Media
+                        <span class="text-accent">Automatically</span>
+                    </h1>
+                    <p class="hero__subtitle">
+                        Our AI-powered platform handles content creation, scheduling, and engagement 
+                        so you can focus on growing your business. 10x your social media ROI in 30 days.
+                    </p>
+                    <div class="hero__cta">
+                        <a href="#pricing" class="btn btn--primary btn--large">Start Free Trial</a>
+                        <a href="#features" class="btn btn--ghost">See How It Works</a>
+                    </div>
+                    <div class="hero__stats">
+                        <div class="stat">
+                            <span class="stat__number">500%</span>
+                            <span class="stat__label">Avg. Engagement Increase</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__number">24/7</span>
+                            <span class="stat__label">Automated Posting</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__number">95%</span>
+                            <span class="stat__label">Time Saved</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__visual">
+                    <img src="./assets/svg/hero-illustration.svg" alt="Social Media Dashboard" class="hero__illustration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Choose Your Growth Plan</h2>
+                <p class="section-subtitle">Start small, scale fast. No long-term contracts.</p>
+            </div>
+            <div class="pricing__grid">
+                <!-- Starter Plan -->
+                <div class="pricing__card">
+                    <div class="pricing__header">
+                        <h3 class="pricing__title">Starter</h3>
+                        <div class="pricing__price">
+                            <span class="pricing__currency">$</span>
+                            <span class="pricing__amount">550</span>
+                            <span class="pricing__period">/month</span>
+                        </div>
+                        <p class="pricing__description">Perfect for small businesses starting their automation journey</p>
+                    </div>
+                    <ul class="pricing__features">
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>5 Social Media Accounts</span>
+                        </li>
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>AI Content Generation</span>
+                        </li>
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>Basic Analytics Dashboard</span>
+                        </li>
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>Email Support</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn--outline btn--full">Get Started</button>
+                </div>
+
+                <!-- Growth Plan (Featured) -->
+                <div class="pricing__card pricing__card--featured">
+                    <div class="pricing__badge">Most Popular</div>
+                    <div class="pricing__header">
+                        <h3 class="pricing__title">Growth</h3>
+                        <div class="pricing__price">
+                            <span class="pricing__currency">$</span>
+                            <span class="pricing__amount">1,200</span>
+                            <span class="pricing__period">/month</span>
+                        </div>
+                        <p class="pricing__description">Scale your reach with advanced automation and analytics</p>
+                    </div>
+                    <ul class="pricing__features">
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>15 Social Media Accounts</span>
+                        </li>
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>Advanced AI Content Suite</span>
+                        </li>
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>Advanced Analytics & Insights</span>
+                        </li>
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>Priority Support + Phone</span>
+                        </li>
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>Custom Integrations</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn--primary btn--full">Scale My Automation</button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="pricing__card">
+                    <div class="pricing__header">
+                        <h3 class="pricing__title">Enterprise</h3>
+                        <div class="pricing__price">
+                            <span class="pricing__currency">$</span>
+                            <span class="pricing__amount">2,250</span>
+                            <span class="pricing__period">/month</span>
+                        </div>
+                        <p class="pricing__description">Enterprise-grade automation with dedicated support</p>
+                    </div>
+                    <ul class="pricing__features">
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>Unlimited Accounts</span>
+                        </li>
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>White-Label Solutions</span>
+                        </li>
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>Custom AI Training</span>
+                        </li>
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>Dedicated Account Manager</span>
+                        </li>
+                        <li class="pricing__feature">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="feature__icon">
+                            <span>24/7 Priority Support</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn--outline btn--full">Book Strategy Call</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Features That Drive Results</h2>
+                <p class="section-subtitle">Everything you need to dominate social media, powered by AI</p>
+            </div>
+            <div class="features__grid">
+                <div class="feature__card">
+                    <div class="feature__icon-wrapper">
+                        <div class="feature__icon">🤖</div>
+                    </div>
+                    <h3 class="feature__title">AI Content Generation</h3>
+                    <p class="feature__description">Create engaging posts, captions, and hashtags automatically using our advanced AI engine trained on viral content patterns.</p>
+                </div>
+                <div class="feature__card">
+                    <div class="feature__icon-wrapper">
+                        <div class="feature__icon">📊</div>
+                    </div>
+                    <h3 class="feature__title">Smart Analytics</h3>
+                    <p class="feature__description">Track performance across all platforms with actionable insights and recommendations to optimize your content strategy.</p>
+                </div>
+                <div class="feature__card">
+                    <div class="feature__icon-wrapper">
+                        <div class="feature__icon">⚡</div>
+                    </div>
+                    <h3 class="feature__title">Auto-Engagement</h3>
+                    <p class="feature__description">Automatically like, comment, and follow relevant accounts to grow your audience organically while you sleep.</p>
+                </div>
+                <div class="feature__card">
+                    <div class="feature__icon-wrapper">
+                        <div class="feature__icon">🎯</div>
+                    </div>
+                    <h3 class="feature__title">Audience Targeting</h3>
+                    <p class="feature__description">Reach the right people at the right time with our intelligent targeting system that learns from your best-performing content.</p>
+                </div>
+                <div class="feature__card">
+                    <div class="feature__icon-wrapper">
+                        <div class="feature__icon">📅</div>
+                    </div>
+                    <h3 class="feature__title">Smart Scheduling</h3>
+                    <p class="feature__description">Post when your audience is most active with our AI-powered optimal timing recommendations for maximum engagement.</p>
+                </div>
+                <div class="feature__card">
+                    <div class="feature__icon-wrapper">
+                        <div class="feature__icon">🔗</div>
+                    </div>
+                    <h3 class="feature__title">Multi-Platform Sync</h3>
+                    <p class="feature__description">Manage Instagram, Twitter, LinkedIn, and Facebook from one dashboard with platform-specific optimizations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Trusted by Growing Businesses</h2>
+                <p class="section-subtitle">See how AutoFlow transformed their social media presence</p>
+            </div>
+            <div class="testimonials__grid">
+                <div class="testimonial__card">
+                    <div class="testimonial__content">
+                        <p class="testimonial__text">"AutoFlow increased our Instagram engagement by 400% in just 2 months. The AI content is so good, people think we hired a full marketing team."</p>
+                        <div class="testimonial__author">
+                            <img src="https://images.pexels.com/photos/3779448/pexels-photo-3779448.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Sarah Chen" class="testimonial__avatar">
+                            <div>
+                                <div class="testimonial__name">Sarah Chen</div>
+                                <div class="testimonial__role">Founder, TechStart</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial__card">
+                    <div class="testimonial__content">
+                        <p class="testimonial__text">"We went from 10K to 100K followers in 6 months. The automation is so smart it feels like having a dedicated social media manager working 24/7."</p>
+                        <div class="testimonial__author">
+                            <img src="https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Marcus Rodriguez" class="testimonial__avatar">
+                            <div>
+                                <div class="testimonial__name">Marcus Rodriguez</div>
+                                <div class="testimonial__role">CEO, GrowthCo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial__card">
+                    <div class="testimonial__content">
+                        <p class="testimonial__text">"ROI was immediate. Within 30 days we saw a 3x increase in website traffic from social. AutoFlow pays for itself and then some."</p>
+                        <div class="testimonial__author">
+                            <img src="https://images.pexels.com/photos/3756166/pexels-photo-3756166.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Emily Foster" class="testimonial__avatar">
+                            <div>
+                                <div class="testimonial__name">Emily Foster</div>
+                                <div class="testimonial__role">Marketing Director, ScaleUp</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact__content">
+                <div class="contact__text">
+                    <h2 class="section-title">Ready to Automate Your Success?</h2>
+                    <p class="section-subtitle">Get a custom automation strategy for your business. No obligation, just results.</p>
+                    <div class="contact__benefits">
+                        <div class="benefit">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="benefit__icon">
+                            <span>Free 30-day trial</span>
+                        </div>
+                        <div class="benefit">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="benefit__icon">
+                            <span>No setup fees</span>
+                        </div>
+                        <div class="benefit">
+                            <img src="./assets/svg/checkmark.svg" alt="✓" class="benefit__icon">
+                            <span>Cancel anytime</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact__form" id="contactForm">
+                    <div class="form__group">
+                        <label for="name" class="form__label">Full Name</label>
+                        <input type="text" id="name" name="name" class="form__input" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="email" class="form__label">Work Email</label>
+                        <input type="email" id="email" name="email" class="form__input" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="company-size" class="form__label">Company Size</label>
+                        <select id="company-size" name="company-size" class="form__select" required>
+                            <option value="">Select company size</option>
+                            <option value="1-10">1-10 employees</option>
+                            <option value="11-50">11-50 employees</option>
+                            <option value="51-200">51-200 employees</option>
+                            <option value="201-500">201-500 employees</option>
+                            <option value="500+">500+ employees</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <label for="message" class="form__label">Message</label>
+                        <textarea id="message" name="message" class="form__textarea" rows="4" placeholder="Tell us about your social media goals..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full">Get My Custom Strategy</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="./assets/images/logo.png" alt="AutoFlow" class="footer__logo-img">
+                        <span class="footer__title">AutoFlow</span>
+                    </div>
+                    <p class="footer__description">The future of social media automation is here. Scale your presence intelligently.</p>
+                </div>
+                <div class="footer__links">
+                    <div class="footer__section">
+                        <h4 class="footer__heading">Product</h4>
+                        <ul class="footer__list">
+                            <li><a href="#features" class="footer__link">Features</a></li>
+                            <li><a href="#pricing" class="footer__link">Pricing</a></li>
+                            <li><a href="#" class="footer__link">Integrations</a></li>
+                            <li><a href="#" class="footer__link">API</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__section">
+                        <h4 class="footer__heading">Company</h4>
+                        <ul class="footer__list">
+                            <li><a href="#" class="footer__link">About</a></li>
+                            <li><a href="#" class="footer__link">Blog</a></li>
+                            <li><a href="#" class="footer__link">Careers</a></li>
+                            <li><a href="#contact" class="footer__link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__section">
+                        <h4 class="footer__heading">Support</h4>
+                        <ul class="footer__list">
+                            <li><a href="#" class="footer__link">Help Center</a></li>
+                            <li><a href="#" class="footer__link">Community</a></li>
+                            <li><a href="#" class="footer__link">Status</a></li>
+                            <li><a href="#" class="footer__link">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 AutoFlow. All rights reserved.</p>
+                <div class="footer__social">
+                    <a href="#" class="footer__social-link" aria-label="Twitter">𝕏</a>
+                    <a href="#" class="footer__social-link" aria-label="LinkedIn">in</a>
+                    <a href="#" class="footer__social-link" aria-label="Instagram">📷</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Toast -->
+    <div id="successToast" class="toast toast--hidden">
+        <div class="toast__content">
+            <div class="toast__icon">✅</div>
+            <div class="toast__text">Request received – we'll reply within 24 h</div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
