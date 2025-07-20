@@ -1,0 +1,177 @@
+@@ .. @@
+                 <div class="metric-card">
+-                    <div class="metric-value" id="totalCustomers">-</div>
+-                    <div class="metric-label">Total Customers</div>
++                    <div class="metric-value" id="totalConsultations">-</div>
++                    <div class="metric-label">Total Consultations</div>
+                 </div>
+                 <div class="metric-card">
+-                    <div class="metric-value" id="activeSubscriptions">-</div>
+-                    <div class="metric-label">Active Subscriptions</div>
++                    <div class="metric-value" id="pendingConsultations">-</div>
++                    <div class="metric-label">Pending Consultations</div>
+                 </div>
+                 <div class="metric-card">
+-                    <div class="metric-value" id="totalRevenue">-</div>
+-                    <div class="metric-label">Monthly Revenue</div>
++                    <div class="metric-value" id="totalContacts">-</div>
++                    <div class="metric-label">Total Contacts</div>
+                 </div>
+                 <div class="metric-card">
+                     <div class="metric-value" id="contactSubmissions">-</div>
+                     <div class="metric-label">Contact Submissions</div>
+                 </div>
+@@ .. @@
+             <div class="section">
+                 <div class="tabs">
+-                    <button class="tab active" onclick="showTab('customers')">Customers</button>
++                    <button class="tab active" onclick="showTab('consultations')">Consultations</button>
+                     <button class="tab" onclick="showTab('contacts')">Contact Submissions</button>
+                 </div>
+
+-                <div id="customersTab" class="tab-content active">
++                <div id="consultationsTab" class="tab-content active">
+                     <div class="section-content">
+-                        <div id="customersLoading" class="loading">Loading customers...</div>
+-                        <div id="customersTable" style="display: none;">
++                        <div id="consultationsLoading" class="loading">Loading consultations...</div>
++                        <div id="consultationsTable" style="display: none;">
+                             <table class="table">
+                                 <thead>
+                                     <tr>
++                                        <th>Name</th>
+                                         <th>Email</th>
+-                                        <th>Name</th>
+-                                        <th>Plan</th>
++                                        <th>Company</th>
++                                        <th>Budget</th>
+                                         <th>Status</th>
+-                                        <th>Created</th>
++                                        <th>Date</th>
++                                        <th>Actions</th>
+                                     </tr>
+                                 </thead>
+-                                <tbody id="customersTableBody"></tbody>
++                                <tbody id="consultationsTableBody"></tbody>
+                             </table>
+                         </div>
+                     </div>
+@@ .. @@
+         function updateMetrics(metrics) {
+-            document.getElementById('totalCustomers').textContent = metrics.totalCustomers;
+-            document.getElementById('activeSubscriptions').textContent = metrics.activeSubscriptions;
+-            document.getElementById('totalRevenue').textContent = `$${metrics.totalRevenue.toLocaleString()}`;
++            document.getElementById('totalConsultations').textContent = metrics.totalConsultations;
++            document.getElementById('pendingConsultations').textContent = metrics.pendingConsultations;
++            document.getElementById('totalContacts').textContent = metrics.totalContacts;
+             document.getElementById('contactSubmissions').textContent = metrics.contactSubmissions;
+         }
+
+-        async function loadCustomers() {
++        async function loadConsultations() {
+             try {
+-                const response = await fetch('/api/admin/customers', {
++                const response = await fetch('/api/admin/consultations', {
+                     headers: { 'Authorization': `Bearer ${authToken}` }
+                 });
+
+                 if (response.ok) {
+-                    const customers = await response.json();
+-                    displayCustomers(customers);
++                    const consultations = await response.json();
++                    displayConsultations(consultations);
+                 }
+             } catch (error) {
+-                console.error('Failed to load customers:', error);
++                console.error('Failed to load consultations:', error);
+             }
+         }
+
+-        function displayCustomers(customers) {
+-            const tbody = document.getElementById('customersTableBody');
+-            const loading = document.getElementById('customersLoading');
+-            const table = document.getElementById('customersTable');
++        function displayConsultations(consultations) {
++            const tbody = document.getElementById('consultationsTableBody');
++            const loading = document.getElementById('consultationsLoading');
++            const table = document.getElementById('consultationsTable');
+
+             loading.style.display = 'none';
+             table.style.display = 'block';
+
+-            tbody.innerHTML = customers.map(customer => {
+-                const subscription = customer.subscriptions[0];
+-                const planName = subscription ? subscription.items.data[0]?.price.nickname || 'Unknown' : 'No Plan';
+-                const status = subscription ? subscription.status : 'No Subscription';
+-                const created = new Date(customer.created * 1000).toLocaleDateString();
++            tbody.innerHTML = consultations.map(consultation => {
++                const date = new Date(consultation.timestamp).toLocaleDateString();
+ 
+                 return `
+                     <tr>
+-                        <td>${customer.email || 'N/A'}</td>
+-                        <td>${customer.name || 'N/A'}</td>
+-                        <td>${planName}</td>
+-                        <td><span class="status status-${status === 'active' ? 'contacted' : 'new'}">${status}</span></td>
+-                        <td>${created}</td>
++                        <td>${consultation.name}</td>
++                        <td>${consultation.email}</td>
++                        <td>${consultation.company}</td>
++                        <td>${consultation.budget}</td>
++                        <td><span class="status status-${consultation.status}">${consultation.status}</span></td>
++                        <td>${date}</td>
++                        <td>
++                            <select onchange="updateConsultationStatus(${consultation.id}, this.value)">
++                                <option value="new" ${consultation.status === 'new' ? 'selected' : ''}>New</option>
++                                <option value="contacted" ${consultation.status === 'contacted' ? 'selected' : ''}>Contacted</option>
++                                <option value="scheduled" ${consultation.status === 'scheduled' ? 'selected' : ''}>Scheduled</option>
++                                <option value="completed" ${consultation.status === 'completed' ? 'selected' : ''}>Completed</option>
++                                <option value="closed" ${consultation.status === 'closed' ? 'selected' : ''}>Closed</option>
++                            </select>
++                        </td>
+                     </tr>
+                 `;
+             }).join('');
+         }
+@@ .. @@
+                 if (response.ok) {
+                     const data = await response.json();
+                     updateMetrics(data.metrics);
+-                    loadCustomers();
++                    loadConsultations();
+                     loadContacts();
+                 } else {
+                     logout();
+@@ -374,6 +374,18 @@
+             }
+         }
+
++        async function updateConsultationStatus(id, status) {
++            try {
++                await fetch(`/api/admin/consultations/${id}`, {
++                    method: 'PUT',
++                    headers: {
++                        'Authorization': `Bearer ${authToken}`,
++                        'Content-Type': 'application/json'
++                    },
++                    body: JSON.stringify({ status })
++                });
++                loadConsultations(); // Refresh the table
++            } catch (error) {
++                console.error('Failed to update consultation status:', error);
++            }
++        }
++
+         async function updateContactStatus(id, status) {
+@@ .. @@
+         function showTab(tabName) {
+             // Update tab buttons
+             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+             event.target.classList.add('active');
+
+             // Update tab content
+             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+             document.getElementById(tabName + 'Tab').classList.add('active');
+
+             currentTab = tabName;
+         }
