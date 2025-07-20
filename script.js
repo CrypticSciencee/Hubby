@@ -252,10 +252,10 @@ if (consultationForm) {
   });
 }
 // Consultation form submission handling
-const consultationForm = document.getElementById('consultationForm');
+const consultationForm2 = document.getElementById('consultationForm');
 
-if (consultationForm) {
-  consultationForm.addEventListener('submit', async function(e) {
+if (consultationForm2) {
+  consultationForm2.addEventListener('submit', async function(e) {
     e.preventDefault();
     
     // Get form elements
@@ -332,7 +332,7 @@ if (consultationForm) {
           successToast.classList.add('toast--visible');
           
           // Reset form
-          consultationForm.reset();
+          consultationForm2.reset();
           
           // Hide toast after 5 seconds
           setTimeout(() => {
@@ -372,7 +372,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeStripe();
   
   const animatedElements = document.querySelectorAll('.feature__card, .testimonial__card, .consultation__card');
-  const animatedElements = document.querySelectorAll('.feature__card, .testimonial__card, .consultation__card');
   
   animatedElements.forEach(el => {
     el.style.opacity = '0';
@@ -383,11 +382,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Consultation card interactions
+const consultationCards = document.querySelectorAll('.consultation__card');
+
+consultationCards.forEach(card => {
+  card.addEventListener('mouseenter', () => {
     card.style.transform = 'translateY(-8px) scale(1.02)';
   });
   
   card.addEventListener('mouseleave', () => {
     card.style.transform = 'translateY(0) scale(1)';
+  });
+});
+
 // Add Stripe script to head
 const stripeScript = document.createElement('script');
 stripeScript.src = 'https://js.stripe.com/v3/';
@@ -395,3 +401,7 @@ stripeScript.async = true;
 document.head.appendChild(stripeScript);
 
 // Add ripple animation
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
