@@ -12,6 +12,11 @@
 -  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 -  gap: var(--space-6);
 -  max-width: 1000px;
+.consultation__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  max-width: 1200px;
 +.consultation__content {
 +  display: grid;
 +  grid-template-columns: 1fr;
@@ -21,6 +26,12 @@
  }
  
 -.pricing__card {
+.consultation__info {
+  display: flex;
+  justify-content: center;
+}
+
+.consultation__card {
 +.consultation__info {
 +  display: flex;
 +  justify-content: center;
@@ -38,6 +49,7 @@
  }
  
 -.pricing__card:hover {
+.consultation__card:hover {
 +.consultation__card:hover {
    transform: translateY(-4px);
    box-shadow: var(--shadow-xl);
@@ -48,6 +60,9 @@
 -  border-color: var(--clr-accent);
 -  animation: pulse 2s infinite;
 -  transform: scale(1.05);
+.consultation__icon {
+  font-size: var(--fs-4xl);
+  margin-bottom: var(--space-4);
 +.consultation__icon {
 +  font-size: var(--fs-4xl);
 +  margin-bottom: var(--space-4);
@@ -64,6 +79,11 @@
 -  border-radius: var(--radius);
 -  font-size: var(--fs-sm);
 -  font-weight: 600;
+.consultation__title {
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+  color: var(--clr-accent);
 +.consultation__title {
 +  font-size: var(--fs-2xl);
 +  font-weight: 600;
@@ -73,6 +93,9 @@
  
 -.pricing__header {
 -  text-align: center;
+.consultation__description {
+  color: var(--clr-muted);
+  line-height: 1.6;
 +.consultation__description {
 +  color: var(--clr-muted);
 +  line-height: 1.6;
@@ -80,15 +103,17 @@
  }
  
 -.pricing__title {
--  font-size: var(--fs-2xl);
--  font-weight: 600;
 -  margin-bottom: var(--space-2);
+.consultation__benefits {
+  text-align: left;
 +.consultation__benefits {
 +  text-align: left;
  }
  
 -.pricing__price {
--  margin-bottom: var(--space-3);
+.consultation__booking {
+  display: flex;
+  justify-content: center;
 +.consultation__booking {
 +  display: flex;
 +  justify-content: center;
@@ -96,8 +121,14 @@
  
 -.pricing__currency {
 -  font-size: var(--fs-lg);
--  color: var(--clr-muted);
 -  vertical-align: top;
+.consultation__form {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: var(--space-6);
+  max-width: 500px;
+  width: 100%;
 +.consultation__form {
 +  background: var(--clr-surface);
 +  border: 1px solid var(--clr-border);
@@ -110,12 +141,15 @@
 -.pricing__amount {
 -  font-size: var(--fs-4xl);
 +.form__title {
-+  font-size: var(--fs-xl);
+.form__title {
+  font-size: var(--fs-xl);
    font-weight: 700;
 -  color: var(--clr-accent);
 +  text-align: center;
 +  margin-bottom: var(--space-6);
-+  color: var(--clr-light);
+  text-align: center;
+  margin-bottom: var(--space-6);
+  color: var(--clr-light);
  }
  
 -.pricing__period {
@@ -124,31 +158,20 @@
 +  text-align: center;
 +  font-size: var(--fs-sm);
    color: var(--clr-muted);
+  margin-top: var(--space-3);
 +  margin-top: var(--space-3);
  }
  
 -.pricing__description {
--  color: var(--clr-muted);
 -  font-size: var(--fs-sm);
--}
--
 -.pricing__features {
--  margin-bottom: var(--space-6);
--}
--
 -.pricing__feature {
--  display: flex;
 -  align-items: center;
 -  gap: var(--space-2);
--  margin-bottom: var(--space-3);
--}
--
 -.feature__icon {
 -  width: 20px;
 -  height: 20px;
 -  flex-shrink: 0;
--}
--
  /* Features Section */
 @@ .. @@
  /* Responsive Design */

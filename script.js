@@ -251,6 +251,104 @@ if (consultationForm) {
     }
   });
 }
+// Consultation form submission handling
+const consultationForm = document.getElementById('consultationForm');
+
+if (consultationForm) {
+  consultationForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Get form elements
+    const nameInput = document.getElementById('consult-name');
+    const emailInput = document.getElementById('consult-email');
+    const phoneInput = document.getElementById('consult-phone');
+    const companyInput = document.getElementById('consult-company');
+    const companySizeSelect = document.getElementById('consult-size');
+    const budgetSelect = document.getElementById('consult-budget');
+    const goalsTextarea = document.getElementById('consult-goals');
+    
+    // Reset previous error states
+    [nameInput, emailInput, phoneInput, companyInput, companySizeSelect, budgetSelect].forEach(input => {
+      if (input) input.classList.remove('error');
+    });
+    
+    let isValid = true;
+    
+    // Validate required fields
+    if (!nameInput.value.trim()) {
+      nameInput.classList.add('error');
+      isValid = false;
+    }
+    
+    if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
+      emailInput.classList.add('error');
+      isValid = false;
+    }
+    
+    if (!phoneInput.value.trim()) {
+      phoneInput.classList.add('error');
+      isValid = false;
+    }
+    
+    if (!companyInput.value.trim()) {
+      companyInput.classList.add('error');
+      isValid = false;
+    }
+    
+    if (!companySizeSelect.value) {
+      companySizeSelect.classList.add('error');
+      isValid = false;
+    }
+    
+    if (!budgetSelect.value) {
+      budgetSelect.classList.add('error');
+      isValid = false;
+    }
+    
+    // If validation passes, submit form
+    if (isValid) {
+      try {
+        const response = await fetch('/api/consultation', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: nameInput.value.trim(),
+            email: emailInput.value.trim(),
+            phone: phoneInput.value.trim(),
+            company: companyInput.value.trim(),
+            companySize: companySizeSelect.value,
+            budget: budgetSelect.value,
+            goals: goalsTextarea.value.trim(),
+            type: 'consultation'
+          }),
+        });
+
+        if (response.ok) {
+          // Show success toast
+          successToast.querySelector('.toast__text').textContent = 'Consultation request received – we\'ll contact you within 24h to schedule';
+          successToast.classList.remove('toast--hidden');
+          successToast.classList.add('toast--visible');
+          
+          // Reset form
+          consultationForm.reset();
+          
+          // Hide toast after 5 seconds
+          setTimeout(() => {
+            successToast.classList.remove('toast--visible');
+            successToast.classList.add('toast--hidden');
+          }, 5000);
+        } else {
+          throw new Error('Failed to submit consultation request');
+        }
+      } catch (error) {
+        console.error('Consultation form submission error:', error);
+        alert('Failed to submit consultation request. Please try again.');
+      }
+    }
+  });
+}
 
 // Header scroll effect
 // Intersection Observer for animations
@@ -274,6 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeStripe();
   
   const animatedElements = document.querySelectorAll('.feature__card, .testimonial__card, .consultation__card');
+  const animatedElements = document.querySelectorAll('.feature__card, .testimonial__card, .consultation__card');
   
   animatedElements.forEach(el => {
     el.style.opacity = '0';
@@ -284,15 +383,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Consultation card interactions
-document.querySelectorAll('.consultation__card').forEach(card => {
-  card.addEventListener('mouseenter', () => {
     card.style.transform = 'translateY(-8px) scale(1.02)';
   });
   
   card.addEventListener('mouseleave', () => {
     card.style.transform = 'translateY(0) scale(1)';
-  });
-});
 // Add Stripe script to head
 const stripeScript = document.createElement('script');
 stripeScript.src = 'https://js.stripe.com/v3/';

@@ -114,6 +114,21 @@
 -                        <td>${planName}</td>
 -                        <td><span class="status status-${status === 'active' ? 'contacted' : 'new'}">${status}</span></td>
 -                        <td>${created}</td>
+                        <td>${consultation.name}</td>
+                        <td>${consultation.email}</td>
+                        <td>${consultation.company}</td>
+                        <td>${consultation.budget}</td>
+                        <td><span class="status status-${consultation.status}">${consultation.status}</span></td>
+                        <td>${date}</td>
+                        <td>
+                            <select onchange="updateConsultationStatus(${consultation.id}, this.value)">
+                                <option value="new" ${consultation.status === 'new' ? 'selected' : ''}>New</option>
+                                <option value="contacted" ${consultation.status === 'contacted' ? 'selected' : ''}>Contacted</option>
+                                <option value="scheduled" ${consultation.status === 'scheduled' ? 'selected' : ''}>Scheduled</option>
+                                <option value="completed" ${consultation.status === 'completed' ? 'selected' : ''}>Completed</option>
+                                <option value="closed" ${consultation.status === 'closed' ? 'selected' : ''}>Closed</option>
+                            </select>
+                        </td>
 +                        <td>${consultation.name}</td>
 +                        <td>${consultation.email}</td>
 +                        <td>${consultation.company}</td>

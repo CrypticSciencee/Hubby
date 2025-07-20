@@ -54,27 +54,12 @@
 +    res.status(500).json({ error: 'Failed to submit consultation request' });
 +  }
 +});
-+
- // Admin dashboard data
- app.get('/api/admin/dashboard', authenticateAdmin, async (req, res) => {
+        totalConsultations,
+        pendingConsultations,
+        totalContacts,
    try {
-+    // Calculate metrics from consultation requests and contacts
-+    const totalConsultations = consultationRequests.length;
-+    const pendingConsultations = consultationRequests.filter(req => req.status === 'new').length;
-+    const totalContacts = contactSubmissions.length;
-+    const recentRequests = [...consultationRequests, ...contactSubmissions]
-+      .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-+      .slice(0, 10);
-
-     res.json({
-       metrics: {
-+        totalConsultations,
-+        pendingConsultations,
-+        totalContacts,
-         contactSubmissions: contactSubmissions.length
-       },
-+      recentRequests,
-       recentSubmissions: contactSubmissions.slice(-10)
+    // Calculate metrics from consultation requests and contacts
+      recentRequests,
      });
    } catch (error) {
      console.error('Dashboard error:', error);
@@ -86,6 +71,7 @@
 +app.get('/api/admin/consultations', authenticateAdmin, (req, res) => {
 +  res.json(consultationRequests);
 +});
+
 
  // Get contact submissions
  app.get('/api/admin/contacts', authenticateAdmin, (req, res) => {
